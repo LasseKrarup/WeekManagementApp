@@ -20,18 +20,37 @@ class App extends React.Component {
 }
 
 class Calendar extends React.Component {
+
+    // constructor(props) {
+    //     super(props);
+
+    //     this.state = {
+    //         persons: [],
+    //         selectedPerson: 'Lasse',
+    //         entries: [],
+    //     }
+
+    //     this.handleChange = this.handleChange.bind(this);
+    // }
+
+    // handleChange(e) {
+    //     this.setState({selectedPerson: e.target.selectedPerson});
+    // }
+
     render() {
 
         const dayElements = DAYS.map(
             (day) => 
-                <Day name={day} />
+                <Day name={day} />//selectedPerson={this.state.selectedPerson} onChange={this.handleChange(e)} />
             
         );
 
         return (
             <div className="calendar-container">
-                <AddPersonButton />
-                <ClearButton />
+                <div className="buttons">
+                    <AddPersonButton />
+                    <ClearButton />
+                </div>
                 {dayElements}
             </div>
         );
@@ -93,10 +112,30 @@ class Entry extends React.Component {
 }
 
 class AddNewEntry extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            persons: ['Flemming', 'Lasse', 'Kathrine'],
+            selectedPerson: 'Select a person...',
+        }
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(e) {
+        this.setState({
+            selectedPerson: e.target.value,
+        });
+    }
+
     render() {
         return (
             <form>
-                <PersonListSelect /><br />
+                <PersonListSelect 
+                    selectedPerson={this.state.selectedPerson} 
+                    persons={this.state.persons}
+                    onChange={this.handleChange} /><br />
                 <input type="text" value="Time" /><br />
                 <input type="text" value="Task" /><br />
                 <input type="submit" value="Add new task" />
@@ -107,17 +146,19 @@ class AddNewEntry extends React.Component {
 
 class PersonListSelect extends React.Component {
     render() {
-        const persons = ['Lasse', 'Kathrine'];
+        const persons = this.props.persons;
         const personList = persons.map(
-            (current) => 
-            <option value={current}>{current}</option>
+            (current,index) => 
+            <option value={current} index={index}>{current}</option>
         );
 
         console.log({personList})
 
         return (
-            <select type="text" value="Person">
-                {personList}
+            <select 
+                onChange={this.props.handleChange} 
+                value={this.props.selectedPerson}>
+                    {personList}
             </select>
         );
     }
