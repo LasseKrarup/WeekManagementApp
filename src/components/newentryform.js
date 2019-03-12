@@ -1,5 +1,4 @@
 import React from 'react';
-
 import PersonListSelect from './personlistselect';
 
 export default class NewEntryForm extends React.Component {

@@ -2,6 +2,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+// Redux
+import { createStore } from 'redux';
+import { connect, Provider } from 'react-redux';
+import rootReducer from './reducers/rootReducer'
+
 // CSS import
 import './index.css';
 
@@ -20,7 +25,11 @@ class App extends React.Component {
     }
 }
 
+const store = createStore(rootReducer);
+
 ReactDOM.render(
-    <App title="Week Management" />,
+    <Provider store={store}>
+        <App title="Week Management" />
+    </Provider>,
     document.getElementById('root')
 );
