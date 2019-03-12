@@ -17,7 +17,7 @@ export default class PersonListSelect extends React.Component {
         // Display an option for each person in this.props.persons
         const personList = this.props.persons.map(
             (current,index) => 
-            <option value={current} index={index}>{current}</option>
+            <option value={current} index={index} key={index}>{current}</option>
         );
 
         console.log({personList})

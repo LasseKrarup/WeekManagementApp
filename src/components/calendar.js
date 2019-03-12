@@ -1,55 +1,41 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
+// Components
 import NewPersonForm from './newpersonform';
-import Day from './day'
+import Lists from './lists';
 
-const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+// Redux
+import { clearCalendar } from '../actions/actions';
 
-export default class Calendar extends React.Component {
+
+class Calendar extends React.Component {
     constructor(props) {
         super(props);
     
         this.state = {
             persons: ['Select a person...', 'Lasse', 'Kathrine'],
-            entries: [],
         };
 
         this.handleClear = this.handleClear.bind(this);
-        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        //this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
 
     handleClear() {
-        alert('clear');
-    }
-    handleFormSubmit(newEntryData) {
-        // use immutable concat function and setState because direct changing of state is not allowed in React
-        const newEntryList = this.state.entries.concat({
-            person: newEntryData.selectedPerson,
-            time: newEntryData.newTime,
-            task: newEntryData.newTask,
-        });
-        this.setState({entries: newEntryList})
+        this.props.clearCalendar();
     }
 
     render() {
-
-        const dayElements = DAYS.map(
-            (day, index) => 
-                <Day 
-                    name={day}
-                    persons={this.state.persons}
-                    entries={this.state.entries}
-                    onFormSubmit={this.handleFormSubmit}  />
-        );
-
         return (
             <div className="calendar-container">
                 <div className="buttons">
                     <NewPersonForm />
                     <button onClick={this.handleClear}>Clear calendar</button>
                 </div>
-                {dayElements}
+                <br />
+                <Lists />
             </div>
         );
     }
 }
+export default connect(null, {clearCalendar})(Calendar);

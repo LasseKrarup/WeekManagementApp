@@ -1,8 +1,12 @@
 import { combineReducers } from 'redux'
-import entriesReducer from './entriesReducers'
+import listReducer from './listReducer'
+import personsReducer from './personsReducer'
+import entriesReducer from './entriesReducer';
 
 const rootReducer = combineReducers({
-    entries: entriesReducer
+    lists: listReducer,
+    entries: entriesReducer,
+    persons: personsReducer
 });
 
 export default rootReducer;
