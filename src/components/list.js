@@ -1,8 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
+// Components
 import NewEntryForm from './newentryform';
 import Entry from './entry';
-import { connect } from 'react-redux';
 
 class List extends React.Component {
     constructor(props) {
@@ -18,16 +19,22 @@ class List extends React.Component {
 
     getEntries(){
         if (this.props.entries) {
-            return this.props.entries.map(
-                (current) => (
-                    <Entry 
-                        id={current.id}
-                        person={current.person}
-                        time={current.time}
-                        task={current.task}
-                        key={current.id}
-                    />
-                )
+            return this.props.entries.allIds.map(
+                (current,index) => {
+                    const thisEntry = this.props.entries[current];
+                    if (thisEntry) {
+                        return (
+                            <Entry 
+                                key={this.props.entries.allIds[index]}
+                                id={this.props.entries.allIds[index]}
+                                listId={this.props.id}
+                                person={thisEntry.person}
+                                time={thisEntry.time}
+                                task={thisEntry.task}
+                            />
+                        );
+                    }
+                }
             );
         }
     }

@@ -5,20 +5,23 @@ export const ADD_PERSON = 'ADD_PERSON';
 export const ADD_LIST = 'ADD_LIST';
 export const REMOVE_LIST = 'REMOVE_LIST';
 export const CLEAR_CALENDAR = "CLEAR_CALENDAR";
+export const TOGGLE_ENTRY = 'TOGGLE_ENTRY';
 
 // ACTION CREATERS
-export const addEntry = (entryToAdd, listId) => 
+export const addEntry = (entryToAdd, entryId, listId) => 
 {
     return({
         type: ADD_ENTRY,
         payload: entryToAdd,
+        id: entryId,
         listId: listId
     });
 };
 
-export const removeEntry = (idToRemove) => ({
+export const removeEntry = (idToRemove, listId) => ({
     type: REMOVE_ENTRY,
-    payload: idToRemove
+    payload: idToRemove,
+    listId: listId
 });
 
 export const addPerson = (newName) => ({
@@ -39,3 +42,9 @@ export const removeList = (listId) => ({
 export const clearCalendar = () => ({
     type: CLEAR_CALENDAR
 })
+
+export const toggleEntry = (idToToggle, listId) => ({
+    type: TOGGLE_ENTRY,
+    payload: idToToggle,
+    listId: listId
+});

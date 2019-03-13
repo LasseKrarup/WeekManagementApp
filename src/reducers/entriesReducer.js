@@ -1,22 +1,35 @@
 /*  This reducer handles entries */
 
 // Import action types
-import { ADD_ENTRY, REMOVE_ENTRY, CLEAR_CALENDAR } from '../actions/actions'
+import { ADD_ENTRY, REMOVE_ENTRY, CLEAR_CALENDAR, TOGGLE_ENTRY } from '../actions/actions'
 
 const entryReducer = (state = [], action) => {
     switch(action.type){
         case ADD_ENTRY:
-            return(
-                [
+            return({
                     ...state,
-                    action.payload
-                ]
+                    [action.id]: action.payload,
+                    allIds: state.allIds ? state.allIds.concat(action.id) : state.concat(action.id)
+                }
             );
         case REMOVE_ENTRY:
-            return([
-                ...state.slice(0, action.payload), // payload = id
-                ...state.slice(action.payload + 1)
-        ]);
+            const { [action.payload]: val, ...newState} = state;
+            return(newState);
+        case TOGGLE_ENTRY:
+            const thisEntry = state[action.payload];
+            if (thisEntry) { //if it still exists (hasn't been deleted)
+                return(
+                    {
+                        ...state,
+                        [action.payload]: //action.payload is the id and key of the entry
+                            {...thisEntry,
+                            isToggled: !thisEntry.isToggled
+                            }
+                        
+                    }
+                );
+            }
+            return state;
         default:    
             return state;
     }
@@ -30,7 +43,7 @@ const entriesReducer = (state = [], action) => {
             {
                 // current state...
                 ...state,
-                // ...and append another entry with the key corresponding to the list ID, so they will be displayed at the right list
+                // key corresponding to the list ID
                 [action.listId]: entryReducer(state[action.listId], action)
             }
         );

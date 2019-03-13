@@ -2,11 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addEntry } from '../actions/actions';
 
+const uuidv1 = require('uuid/v1');
+
 const initialState = {
     person: 'Select a person...',
     time: '',
     task: '',
 };
+
 class NewEntryForm extends React.Component {
     constructor(props) {
         super(props);
@@ -27,7 +30,8 @@ class NewEntryForm extends React.Component {
         e.preventDefault();
         this.props.addEntry(
             this.state, //pass the entire state as first argument
-            this.props.listId //and the ID of this list as the second argument
+            uuidv1(), //and id of this entry as second argument
+            this.props.listId //and the ID of this list as the third argument
         );
         this.setState(initialState);
     }
