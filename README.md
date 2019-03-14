@@ -16,11 +16,11 @@ A gulpfile has been created for watching the `.scss` files in the `/src/scss/` f
 
 ## Technologies
 
-This app is built using [React](reactjs.org), and the state is maintained using [Redux](redux.js.org). The CSS-styling is primarily made with [Bootstrap 4](getbootstrap.com).
+This app is built using [React](www.reactjs.org), and the state is maintained using [Redux](www.redux.js.org). The CSS-styling is primarily made with [Bootstrap 4](www.getbootstrap.com).
 
 ## Further work
 
-Even though the client-side view part of this app is considered to be almost finished, there are many things to be implemented on this app yet. It is the intention to scale this to become a full-stack app with an [ASP.NET](https://dotnet.microsoft.com/apps/aspnet) back-end controller and a yet to be decided database model - possibly [mongoDB](mongodb.com).
+Even though the client-side view part of this app is considered to be almost finished, there are many things to be implemented on this app yet. It is the intention to scale this to become a full-stack app with an [ASP.NET](https://dotnet.microsoft.com/apps/aspnet) back-end controller and a yet to be decided database model - possibly [mongoDB](www.mongodb.com).
 
 Some of the future work - but not all - is listed below.
 
