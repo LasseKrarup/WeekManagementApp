@@ -1,68 +1,41 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Week Management
 
-## Available Scripts
+## About
 
-In the project directory, you can run:
+This project is a web app under development that aims towards becoming a management system for people living under the same roof, that require an easy to use and simple way to structurize their daily lives.
 
-### `npm start`
+## Getting started
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Clone this repository and run the server with
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+`npm start`
 
-### `npm test`
+A gulpfile has been created for watching the `.scss` files in the `/src/scss/` folder. Build and watch the files by running
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`gulp`
 
-### `npm run build`
+## Technologies
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This app is built using [React](reactjs.org), and the state is maintained using [Redux](redux.js.org). The CSS-styling is primarily made with [Bootstrap 4](getbootstrap.com).
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Further work
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Even though the client-side view part of this app is considered to be almost finished, there are many things to be implemented on this app yet. It is the intention to scale this to become a full-stack app with an [ASP.NET](https://dotnet.microsoft.com/apps/aspnet) back-end controller and a yet to be decided database model - possibly [mongoDB](mongodb.com).
 
-### `npm run eject`
+Some of the future work - but not all - is listed below.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Back-end
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The entire back-end is yet to be implemented. It is the intention to design an [ASP.NET](https://dotnet.microsoft.com/apps/aspnet) based back-end.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Database
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The entire database model of this app is also to be implemented. What database to use has not yet been decided. It might be [mongoDB](mongodb.com).
 
-## Learn More
+### Custom lists feature
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The skeleton for custom lists is already made, and the Redux reducers and action creators have been set up.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Delete persons feature
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This feature is quickly implemented - and will be so in the near future. The need for this is just not very urgent for the time being.
