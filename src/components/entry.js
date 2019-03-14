@@ -1,7 +1,7 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 
-import { removeEntry, toggleEntry } from '../actions/actions';
+import { removeEntry, toggleEntry } from "../actions/actions";
 
 class Entry extends React.Component {
     constructor(props) {
@@ -12,30 +12,45 @@ class Entry extends React.Component {
     }
 
     onDeleteClick() {
-        this.props.removeEntry(this.props.id, this.props.listId)
+        this.props.removeEntry(this.props.id, this.props.listId);
     }
-    onEntryClick() {
-        this.props.toggleEntry(this.props.id, this.props.listId)
+    onEntryClick(e) {
+        e.preventDefault();
+        this.props.toggleEntry(this.props.id, this.props.listId);
     }
 
     render() {
         return (
-            <li 
-                onClick={this.onEntryClick} 
-                className={this.props.isToggled ? 
-                    "completed" : "notCompleted"    
+            <a
+                href="#"
+                onClick={this.onEntryClick}
+                className={
+                    "list-group-item list-group-item-action" +
+                    (this.props.isCompleted ? " active" : "") //toggle "active" from redux store state
                 }
             >
-                <span className="badge">
-                    {this.props.person}, {this.props.time}
-                </span> <br />
-                {this.props.task}
-                <button onClick={this.onDeleteClick}>X</button>
-            </li>
+                <div className="d-flex justify-content-between">
+                    <strong>
+                        {this.props.person} - {this.props.time}
+                    </strong>
+                </div>
+                <p>{this.props.task}</p>
+                <button
+                    className="btn btn-danger btn-close btn-topright"
+                    onClick={this.onDeleteClick}
+                >
+                    &times;
+                </button>
+            </a>
         );
     }
 }
 const mapStateToProps = (state, ownProps) => {
-    return ({isToggled: state.entries[ownProps.listId][ownProps.id].isToggled});
+    return {
+        isCompleted: state.entries[ownProps.listId][ownProps.id].isCompleted
+    };
 };
-export default connect(mapStateToProps, {removeEntry, toggleEntry})(Entry);
+export default connect(
+    mapStateToProps,
+    { removeEntry, toggleEntry }
+)(Entry);

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 // PersonListSelect class
 export default class PersonListSelect extends React.Component {
@@ -13,20 +13,21 @@ export default class PersonListSelect extends React.Component {
     }
 
     render() {
-
         // Display an option for each person in this.props.persons
-        const personList = this.props.persons.map(
-            (current,index) => 
-            <option value={current} index={index} key={index}>{current}</option>
-        );
+        const personList = this.props.persons.map((current, index) => (
+            <option value={current} index={index} key={index}>
+                {current}
+            </option>
+        ));
 
-        console.log({personList})
+        console.log({ personList });
 
         return (
-            <select 
-                onChange={this.handleSelectChange} 
-                value={this.props.selectedPerson}>
-                    {personList}
+            <select
+                onChange={this.handleSelectChange}
+                value={this.props.selectedPerson}
+            >
+                {personList}
             </select>
         );
     }

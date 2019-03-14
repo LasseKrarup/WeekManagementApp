@@ -1,0 +1,80 @@
+// Custom variables
+
+/* Standard list group colors */
+$list-group-bg: rgb(104, 153, 233);
+$list-group-hover-bg: rgb(94, 133, 213);
+
+/* action (while clicking) colors */
+$list-group-action-active-bg: rgb(84, 123, 203);
+
+/* active (completed) colors */
+$list-group-active-color: #999;
+$list-group-active-bg: #666;
+
+$list-bg: #ddd;
+
+// Bootstrap import
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+$list-group-action-active-color: $blue !important;
+html {
+    overflow-y: scroll;
+}
+
+.list {
+    min-height: 5cm;
+    background-color: $list-bg;
+    padding: 2em;
+    border-radius: 0.5em;
+}
+
+.formspawner {
+    position: relative;
+    bottom: 0px;
+}
+
+.customModal {
+    border-radius: 1em;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+    z-index: 20;
+    padding: 2em;
+    margin: 0;
+    margin-top: -10%;
+    margin-left: -15%;
+    width: 30%;
+    height: 30%;
+    background-color: $primary;
+}
+
+.btn-close {
+    opacity: 0.5;
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.btn-topright {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.visible {
+    visibility: visible;
+}
+.hidden {
+    visibility: hidden;
+}

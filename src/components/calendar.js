@@ -1,41 +1,32 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 
 // Components
-import NewPersonForm from './newpersonform';
-import Lists from './lists';
+import Lists from "./lists";
+import Modal from "./modal";
 
 // Redux
-import { clearCalendar } from '../actions/actions';
-
+import { clearCalendar } from "../actions/actions";
 
 class Calendar extends React.Component {
-    constructor(props) {
-        super(props);
-    
-        this.state = {
-            persons: ['Select a person...', 'Lasse', 'Kathrine'],
-        };
-
-        this.handleClear = this.handleClear.bind(this);
-        //this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    }
-
-    handleClear() {
-        this.props.clearCalendar();
-    }
-
     render() {
         return (
-            <div className="calendar-container">
-                <div className="buttons">
-                    <NewPersonForm />
-                    <button onClick={this.handleClear}>Clear calendar</button>
+            <div>
+                <div className="container">
+                    <Lists />
                 </div>
-                <br />
-                <Lists />
+                <Modal>
+                    <h2>That's not a valid entry!</h2>
+                    <p className="lead">
+                        Did you choose a person? And set the time and task? Try
+                        again. You can add a person at the top of this page.
+                    </p>
+                </Modal>
             </div>
         );
     }
 }
-export default connect(null, {clearCalendar})(Calendar);
+export default connect(
+    null,
+    { clearCalendar }
+)(Calendar);
