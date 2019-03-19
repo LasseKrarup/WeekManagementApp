@@ -11,6 +11,7 @@ class List extends React.Component {
 
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.getEntries = this.getEntries.bind(this);
+        this.isListEmpty = this.isListEmpty.bind(this);
     }
 
     handleFormSubmit(newEntryData) {
@@ -37,6 +38,19 @@ class List extends React.Component {
         }
     }
 
+    isListEmpty() {
+        if (
+            typeof this.props.entries === "undefined" ||
+            this.props.entries.allIds.length === 0
+        ) {
+            return (
+                <p className="text-muted">
+                    No entries yet... Add an entry above to display it here.
+                </p>
+            );
+        }
+    }
+
     render() {
         return (
             <div className="col-sm-12 col-md-4 col-xl-3 my-3">
@@ -44,12 +58,7 @@ class List extends React.Component {
                     <h5>{this.props.name}</h5>
                     <hr />
                     <FormSpawner listId={this.props.id} />
-                    {typeof this.props.entries === "undefined" ? (
-                        <p className="text-muted">
-                            No entries yet... Add an entry above to display it
-                            here.
-                        </p>
-                    ) : null}
+                    {this.isListEmpty()}
                     <div className="list-group">{this.getEntries()}</div>
                 </div>
             </div>

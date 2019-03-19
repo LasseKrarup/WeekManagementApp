@@ -23,7 +23,12 @@ const entryReducer = (state = [], action) => {
                     : state.concat(action.id)
             };
         case REMOVE_ENTRY:
-            const { [action.payload]: val, ...newState } = state;
+            let { [action.payload]: val, ...newState } = state;
+            // Filter ID from state.allIds
+            const newAllIds = newState.allIds.filter(id => id === action.id);
+            // override newState
+            newState.allIds = newAllIds;
+
             return newState;
         case TOGGLE_ENTRY:
             const thisEntry = state[action.payload];

@@ -29,7 +29,7 @@ class NewEntryForm extends React.Component {
     handleFormSubmit(e) {
         e.preventDefault();
 
-        let isTimeValid = /([01]?\d|2[0-3])[:.]{1}[0-5][0-9]/g.test(
+        let isTimeValid = /([01]?\d|2[0-3])[:.]{1}[0-5][0-9]$/g.test(
             this.state.time
         );
 
