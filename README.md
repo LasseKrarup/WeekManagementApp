@@ -24,13 +24,13 @@ Even though the client-side view part of this app is considered to be almost fin
 
 Some of the future work - but not all - is listed below.
 
-### Back-end
+### Backend API
 
-The entire back-end is yet to be implemented. It is the intention to design an [ASP.NET](https://dotnet.microsoft.com/apps/aspnet) based back-end.
+The entire API for database handling is yet to be implemented. It might be built using [ASP.NET](https://dotnet.microsoft.com/apps/aspnet).
 
 ### Database
 
-The entire database model of this app is also to be implemented. What database to use has not yet been decided. It might be [mongoDB](https://mongodb.com).
+The entire database part of this app is also to be implemented. What database to use has not yet been decided. It might be [mongoDB](https://mongodb.com) or it might be something completely different.
 
 ### Custom lists feature
 

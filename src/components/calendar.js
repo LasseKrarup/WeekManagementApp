@@ -18,8 +18,9 @@ class Calendar extends React.Component {
                 <Modal>
                     <h2>That's not a valid entry!</h2>
                     <p className="lead">
-                        Did you choose a person? And set the time and task? Try
-                        again. You can add a person at the top of this page.
+                        Did you choose a person? And set the task? Remember to
+                        use 24h-formatting (ie. 13:50). Try again. You can add a
+                        person at the top of this page.
                     </p>
                 </Modal>
             </div>

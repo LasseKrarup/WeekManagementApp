@@ -5,7 +5,7 @@ import { toggleModal } from "../actions/actions";
 
 const Modal = props => {
     return (
-        <div>
+        <div className="modalContainer">
             <div
                 className={
                     "overlay " + (props.isVisible ? "visible" : "hidden")

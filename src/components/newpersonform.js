@@ -16,8 +16,10 @@ class NewPersonForm extends React.Component {
     }
 
     handleClick() {
-        this.props.addPerson(this.state.newPersonText);
-        this.setState({ newPersonText: "" });
+        if (this.state.newPersonText !== "") {
+            this.props.addPerson(this.state.newPersonText);
+            this.setState({ newPersonText: "" });
+        }
     }
     handleTextChange(e) {
         this.setState({
